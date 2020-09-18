@@ -87,13 +87,7 @@ console.log(f());
 */
 
 function returnArgumentsArray(...args) {
-  const array = [];
-
-  for (const arg of args) {
-    array.push(arg);
-  }
-
-  return array;
+  return args;
 }
 console.log(returnArgumentsArray(1, 2, 3));
 
@@ -118,10 +112,12 @@ function sum(a, b) {
 }
 
 function bindFunction(fn, ...rest) {
-  return () => fn.apply(this, [...rest]);
+  return () => fn(...rest);
 }
 
 const newSum = bindFunction(sum, 2, 4);
+
+console.log(newSum());
 
 export {
   returnFirstArgument,
@@ -131,5 +127,3 @@ export {
   returnCounter,
   bindFunction,
 };
-
-console.log(newSum());

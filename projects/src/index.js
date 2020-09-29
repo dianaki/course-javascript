@@ -17,7 +17,7 @@
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
 */
 function isAllTrue(array, fn) {
-  if (array.length === 0 || !(typeof array === 'object' && array.constructor === Array)) {
+  if (array.length === 0 || !(array instanceof Array)) {
     throw new Error('empty array');
   }
 

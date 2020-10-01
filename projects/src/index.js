@@ -50,13 +50,13 @@ function prepend(what, where) {
  */
 function findAllPSiblings(where) {
   const array = [];
-  const allChildren = where.children;
+  const allParagraphs = where.getElementsByTagName('p');
 
-  for (const children of allChildren) {
-    const next = children.nextElementSibling;
+  for (const paragraph of allParagraphs) {
+    const previous = paragraph.previousSibling;
 
-    if (next && next.tagName === 'P') {
-      array.push(children);
+    if (previous && previous.tagName !== 'p') {
+      array.push(previous);
     }
   }
   return array;
